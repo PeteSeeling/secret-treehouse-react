@@ -1,5 +1,6 @@
 import {
   fireEvent,
+  userEvent,
   render,
   screen,
   waitFor,
@@ -43,11 +44,11 @@ it('should allow the user to log in', async () => {
   const passwordField = screen.getByLabelText('Password');
   const submitBtn = screen.getByRole('button', { name: 'Sign In' });
   
-  fireEvent.change(emailField, {
-    target: { value: 'test@example.com' },
+ fireEvent.change(emailField, {
+    input: { value: 'test@example.com' },
   });
   fireEvent.change(passwordField, {
-    target: { value: 'secret' },
+    input: { value: 'secret' },
   });
   
   expect(passwordField).toHaveValue('secret');
