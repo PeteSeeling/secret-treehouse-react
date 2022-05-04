@@ -16,9 +16,15 @@ export default function Login() {
   const { from } = location.state || { from: { pathname: '/' } };
 
   const handleLogin = (event) => {
+  
     event.preventDefault();
     const loginWasSuccessful = auth.login(formState.email, formState.password);
 
+    !loginWasSuccessful ? setError('Login Unsuccessful') : history.replace(from);
+
+  
+
+  
     // TODO: If login was unsuccessful, set an error with a message
     // to display to the user that their login failed.
     //
@@ -32,13 +38,13 @@ export default function Login() {
     <>
       <h3>You must log in to view the page at {from.pathname}</h3>
       <form onSubmit={handleLogin} className={styles.loginForm}>
-        <label>Email</label>
+        <label aria-label='Email'>Email</label>
         <input
           id="email"
           name="email"
           type="email"
         />{' '}
-        <label>Password</label>
+        <label aria-label='Password'>Password</label>
         <input
           id="password"
           name="password"
@@ -51,4 +57,4 @@ export default function Login() {
       {error && <h4 className={styles.error}>{error}</h4>}
     </>
   );
-}
+  }
