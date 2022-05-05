@@ -43,13 +43,16 @@ it('should allow the user to log in', async () => {
   const emailField = screen.getByLabelText('Email');
   const passwordField = screen.getByLabelText('Password');
   const submitBtn = screen.getByRole('button', { name: 'Sign In' });
+
   
  fireEvent.change(emailField, {
-    input: { value: 'test@example.com' },
+    target: { value: 'test@example.com' }
   });
   fireEvent.change(passwordField, {
-    input: { value: 'secret' },
+    target: { value: 'secret' },
+    
   });
+
   
   expect(passwordField).toHaveValue('secret');
   expect(emailField).toHaveValue('test@example.com');
