@@ -16,8 +16,8 @@ export default function Login() {
   const { from } = location.state || { from: { pathname: '/' } };
 
   const handleLogin = (event) => {
-  
     event.preventDefault();
+    
     const loginWasSuccessful = auth.login(formState.email, formState.password);
 
     !loginWasSuccessful ? setError('Login Unsuccessful') : history.replace(from);
