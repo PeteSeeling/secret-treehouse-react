@@ -48,8 +48,10 @@ it('should allow the user to log in', async () => {
     input: { value: 'test@example.com' },
   });
   fireEvent.change(passwordField, {
-    input: { value: 'secret' },
+    target: { value: 'secret' },
+    
   });
+  console.log(passwordField, 'pasword field-------')
   
   expect(passwordField).toHaveValue('secret');
   expect(emailField).toHaveValue('test@example.com');
