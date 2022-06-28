@@ -14,17 +14,11 @@ export default function Login() {
   // The `from` property of `location.state` gives us
   // the URL to redirect to after logging in.
   const { from } = location.state || { from: { pathname: '/' } };
-
   const handleLogin = (event) => {
     event.preventDefault();
     
     const loginWasSuccessful = auth.login(formState.email, formState.password);
-
     !loginWasSuccessful ? setError('Login Unsuccessful') : history.replace(from);
-
-  
-
-  
     // TODO: If login was unsuccessful, set an error with a message
     // to display to the user that their login failed.
     //
@@ -42,12 +36,14 @@ export default function Login() {
       onChange={handleFormChange}
       className={styles.loginForm}>
         <label for='email'>Email</label>
+
         <input
           id="email"
           name="email"
           type="email"
           value={formState.email}
         />{' '}
+
         <label for='password'>Password</label>
         <input
           id="password"
@@ -55,6 +51,7 @@ export default function Login() {
           type="password"
           value={formState.password}
         />
+        
         <button type="submit" aria-label="Sign In">
           Sign in
         </button>
