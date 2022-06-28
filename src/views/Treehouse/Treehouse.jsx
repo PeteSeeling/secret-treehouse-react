@@ -6,7 +6,7 @@ import styles from './Treehouse.css';
 export default function Treehouse() {
   const history = useHistory();
   const { user, logout } = useAuth();
-
+  
   const handleLogout = () => {
     logout(() => history.push('/'));
   };
